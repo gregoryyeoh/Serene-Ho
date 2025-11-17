@@ -55,3 +55,5 @@ echo "\nDone. You can now visit http://localhost/Serene-Ho/ in your browser.\n";
 echo "IMPORTANT: Delete this file (create-db.php) once everything works.\n";
 
 
+
+
