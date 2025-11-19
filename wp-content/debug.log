@@ -39,3 +39,9 @@
 [18-Nov-2025 01:01:52 UTC]   Automatic plugin updates starting...
 [18-Nov-2025 01:01:52 UTC]   Automatic plugin updates complete.
 [18-Nov-2025 01:01:52 UTC] Automatic updates complete.
+[18-Nov-2025 02:43:33 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
+[18-Nov-2025 02:44:50 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
+[18-Nov-2025 02:45:22 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
+[18-Nov-2025 02:46:07 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
+[18-Nov-2025 02:46:22 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
+[18-Nov-2025 02:46:40 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\Serene-Ho\wp-includes\class-wp-customize-widgets.php on line 926
