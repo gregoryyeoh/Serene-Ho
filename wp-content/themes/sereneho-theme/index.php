@@ -2,16 +2,63 @@
 /**
  * Main template file for the Serene Ho Profile theme.
  *
- * This theme simply outputs the static HTML page that was copied from
- * sereneho.assured.sg so it can be activated and exported across sites.
+ * This theme outputs the static HTML page that was copied from
+ * sereneho.assured.sg, but rewrites external image URLs so that
+ * images are served locally from this theme instead of remote hosts.
  */
 
 // Path to the static HTML file inside this theme.
 $static_file = __DIR__ . '/sereneho.html';
 
 if ( file_exists( $static_file ) ) {
-    // Output the full static HTML document.
-    readfile( $static_file );
+    // Load the static HTML contents.
+    $html = file_get_contents( $static_file );
+
+    // Base URL to this theme (e.g. http://localhost/Serene-Ho/wp-content/themes/sereneho-theme)
+    $theme_uri = get_stylesheet_directory_uri();
+
+    /**
+     * Rewrite external image URLs to local theme paths.
+     *
+     * NOTE: For this to work, you must manually copy the image files from
+     *       your downloaded mirror (e.g. c:\Users\gyeoh\Downloads\sereneho.assured.sg\able.imgix.net\sereneho\*.jpg)
+     *       into this theme directory:
+     *       wp-content/themes/sereneho-theme/assets/images/sereneho/
+     */
+
+    // Example: https://able.imgix.net/sereneho/22112770133635.jpg?q=70
+    // becomes: [theme_uri]/assets/images/sereneho/22112770133635.jpg?q=70
+    $html = str_replace(
+        'https://able.imgix.net/sereneho/',
+        $theme_uri . '/assets/images/sereneho/',
+        $html
+    );
+
+    // Handle protocol-relative URLs as well, if present: //able.imgix.net/sereneho/...
+    $html = str_replace(
+        '//able.imgix.net/sereneho/',
+        $theme_uri . '/assets/images/sereneho/',
+        $html
+    );
+
+    // Handle the "sereheho" variant used on some images (e.g. hero image):
+    // https://able.imgix.net/sereheho/40831673614669.jpg?w=1050&h=1050&fit=crop&q=70
+    // -> [theme_uri]/assets/images/sereheho/40831673614669.jpg?w=1050&h=1050&fit=crop&q=70
+    $html = str_replace(
+        'https://able.imgix.net/sereheho/',
+        $theme_uri . '/assets/images/sereheho/',
+        $html
+    );
+
+    // Protocol-relative version: //able.imgix.net/sereheho/...
+    $html = str_replace(
+        '//able.imgix.net/sereheho/',
+        $theme_uri . '/assets/images/sereheho/',
+        $html
+    );
+
+    // Output the modified static HTML document.
+    echo $html;
 } else {
     // Fallback message if the static file is missing.
     status_header( 500 );
